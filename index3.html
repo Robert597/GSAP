@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>GSAP</title>
+</head>
+<body class="body">
+    <h1 class="kh"></h1>
+    <button id="cta">watch here</button>
+
+    <div class="panel">
+        <img src="images/light.png.png" id="light">
+        <p>Some great line about engineering and how we did something everyone will love.</p>
+        <div class="box"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js" integrity="sha512-5nTpER5HrSoRPyd8szIn2QglL3A54KJs4XOcX3SdHTbLb8TO/5wLqoFYSFGNyhzZy7CFAOZf66X3ikr2v7Bfuw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/TextPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/Observer.min.js"></script>
+   <script>
+       gsap.registerPlugin(Observer);
+       Observer.create({
+           target: window,
+          type: "wheel, touch, scroll, pointer" ,
+          onPress: () => {
+            gsap.fromTo('.body', 2, {opacity: 0, background: "yellow"}, {opacity: 1, background: "green"})
+          },
+          onChange:(self) => {
+              console.log(self.deltaY, self.velocityY)
+          }
+       })
+       document.getElementById('cta').addEventListener('click', () => {
+           TweenMax.to('.panel', 1.5, {scaleY: 1, height: '100vh',ease: Bounce.easeOut});
+           TweenMax.to('#light', 1, {opacity: 1, y: 0, delay: 1.5})
+           TweenMax.to('p', 1, {opacity: 1, y: 20, delay: 1.5})
+       })
+   </script>
+</body>
+</html>

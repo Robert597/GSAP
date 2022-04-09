@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="animation">
+        <h1 class="animate">loading <span>loading </span>loading <span>loading</span></h1>
+        <h1 class="animate">loading <span>loading </span>loading <span>loading</span></h1>
+        <h1 class="animate">loading <span>loading </span>loading <span>loading</span></h1>
+        <h1 class="animate">loading <span>loading </span>loading <span>loading</span></h1>
+        <h1 class="animate">loading <span>loading </span>loading <span>loading</span></h1>
+        <h1 class="animate">loading <span>loading </span>loading <span>loading</span></h1>
+    </div>
+    <div class="container">
+       <h1> RObert Oluwaseun</h1>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
+    <script>
+        const tl = gsap.timeline();
+        tl.to(".animate", {
+            delay: 3,
+            duration: .5,
+            opacity: 0
+        })
+        tl.to('.animation', {
+            delay: 1,
+            duration: 1,
+            y: "-100%",
+            ease: "power4.out"
+        })
+        tl.to(".animation", {
+            duration: 2,
+            background: "yellow"
+        })
+        tl.from(".container h1", {
+            delay: .2,
+            duration: .8,
+            skewY: 10,
+            y: 100, 
+            x: -199,
+            opacity: 0
+        })
+    </script>
+</body>
+</html>
